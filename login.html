@@ -228,5 +228,20 @@
 	</footer>
 
 
+	<script>
+    async function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const res = await fetch('employees.json');
+      const data = await res.json();
+
+      const found = data.employees.find(emp => emp.email === email && emp.password === password);
+      if (found) {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById('message').textContent = "Invalid credentials.";
+      }
+    }
+  </script>
 </body>
 </html>
